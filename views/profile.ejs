@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile -Blogify</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Dancing Script', cursive;
+            background-color: #f0ebeb; /* Dark background color */
+            color: #2cb1c9; /* Light text color */
+        }
+
+        nav {
+            padding: 15px;
+            background-color: #111313; /* Dark navbar background color */
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            border-bottom: 2px solid #eb2309; /* Green underline color on hover */
+        }
+       
+        @keyframes fadeInUp {
+            to {
+                opacity: 2;
+                transform: translateY(0);
+            }
+        }
+
+
+#algn{
+    height: 92vh;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card{
+    width: 370px;
+    height: 435px;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 #8a8d91, 0 6px 20px 0 #E7E9EB;
+}
+
+#upper-bg{
+    width: 100%;
+    height: 35%;
+    background-color: #2cb1c9;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-pic{
+    width: 30%;
+    background-color: rgb(38, 187, 197);
+    border: 3px solid #42adc0;
+    border-radius: 50%;
+    padding: 3px;
+    position: absolute;
+    top: 10px;
+}
+
+#lower-bg{
+    width: 100%;
+    height: 65%;
+}
+
+.text{
+    text-align: center;
+    padding-top: 35px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.text .name{
+   
+    padding: 0;
+    margin: 5px;
+    color: black;
+
+}
+
+.text .title{
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: black;
+    
+}
+
+#icons{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+#icons img{
+    width: 80%;
+    height: 90%;
+}
+
+.ico{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+    
+}
+
+#btn button{
+    margin: 0 15px;
+    padding: 10px 25px;
+    background-color: #2cb1c9;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: "dancing script";
+}
+#addProfile{
+    background-color: #2cb1c9;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: "dancing script";
+}
+#addprofile{
+    box-shadow: 0 4px 8px 0 #7c8085, 0 6px 20px 0 #E7E9EB;
+
+}
+#btn button:hover{
+    box-shadow: 0 4px 8px 0 #7c8085, 0 6px 20px 0 #E7E9EB;
+}
+
+#l-c-s{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 10px;
+}
+
+#l-c-s .num{
+    display: flex;
+}
+
+#l-c-s .dvr{
+    width: 2px;
+    height: 25px;
+    background-color: gray;
+}
+
+#l-c-s img{
+    width: 24px;
+    height: 24px;
+}
+
+.license{
+    font-size: 12px;
+    text-align: center;
+}
+
+.license .ll{
+    padding: 0 10px;
+    display: inline;
+}
+    </style>
+</head>
+<body>
+<!-- 
+    <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blogs</a>
+        <a href="/addblog">Add Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        
+    </nav> -->
+
+    <div id="algn">
+        <div id="card" >
+            <div id="upper-bg" class="overflow-hidden">
+                <img src="/images/uploads/<%= user.profileImage %>" alt="profile-pic" class="profile-pic object-cover">
+            </div>
+            <form hidden action="/fileupload" id="uploadForm" method="post" enctype="multipart/form-data">
+                <input  type="file" name="image" />
+              </form>
+            <div class="d-flex justify-content-center">
+                <button id="addprofile" type="button" style="padding-top: 2px ; padding: 2px 5px;" class="btn btn-sm">Add profile Image</button>
+
+
+            </div>
+
+            <div id="lower-bg">
+              <div class="text">
+                <p class="name"><%= user.username %></p>
+                <p class="title"><%= user.name %> <br> BlogsAdded -<%= user.posts.length %></p>
+              </div>
+              <div id="icons">
+                <a href="#" class="ico"><img width="48" height="48" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/></a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/fluency/48/github.png" alt="github"/>
+                </a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin"/>
+                </a>
+                <a href="#" class="ico">
+                  <img width="48" height="48" src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new"/>
+                </a>
+              </div>
+              <div id="btn">
+                <a href="/logout" ><button class="msg">Logout</button></a>
+                <a href="/MyBlog"  ><button class="msg">MyBlogs</button></a>
+                <a href="/blog" ><button class="msg">Explore</button></a>
+
+              </div>
+             
+            </div>
+        </div>
+        </div>
+
+        <script>
+            let btn = document.querySelector("#addprofile");
+let inputfile = document.querySelector("#ifile");
+
+
+document.querySelector("#addprofile").addEventListener("click", function(){
+        document.querySelector("#uploadForm input").click();
+    });
+    document.querySelector("#uploadForm input").addEventListener("change", function(){
+        document.querySelector("#uploadForm").submit();
+    });
+        </script>
+        // <!-- <div class="license">
+        //     <div class="ll"><a  href="https://icons8.com/icon/P7UIlhbpWzZm/gmail">Gmail</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        //     <div class="ll"><a  href="https://icons8.com/icon/AZOZNnY73haj/github">GitHub</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        //     <div class="ll"><a  href="https://icons8.com/icon/13930/linkedin">LinkedIn</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        //     <div class="ll"><a  href="https://icons8.com/icon/118497/facebook">Facebook</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        //     <div class="ll"><a  href="https://icons8.com/icon/u8MTpAq972MG/like">Like</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        //     <div class="ll"><a  href="https://icons8.com/icon/8h51YOzhBJmT/comment">Comment</a> icon by <a href="https://icons8.com">Icons8</a></div>
+        // </div> -->
+
+</body>
+</html>
